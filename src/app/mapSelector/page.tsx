@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function MapSelector() {
   const navigation = [
     {
@@ -35,12 +34,12 @@ export default function MapSelector() {
   ];
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-        <Link href='/'>Home</Link>
+      <Link href="/">Home</Link>
       <nav>
         {navigation.map((link, index) => {
           return (
-            <div className="flex justify-center m-2" style={{background: "grey"}}>
-              <Link href={`mapSelector/${link.name}`} key={index}>
+            <div className="flex justify-center m-2" style={{ background: "grey" }} key={index}>
+              <Link href={`mapSelector/${link.name}`}>
                 <div>{link.name}</div>
               </Link>
             </div>
