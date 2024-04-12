@@ -8,8 +8,8 @@ const s3 = new S3Client();
 //getting image keys
 const getImageKeys = async (userId: string) => {
     const command = new ListObjectsV2Command({
-        Bucket: process.env.AWS_BUCKET,
-        Prefix: userId
+        // Bucket: process.env.AWS_BUCKET,
+        // Prefix: userId
     })
     const {Contents = []} = await s3.send(command)
     return Contents.map(image=>image.Key)
@@ -22,8 +22,8 @@ const getPresignedUrls = async (userId: any) => {
 
         const presignedUrls = Promise.all(imageKeys.map((key)=>{
             const command = new GetObjectCommand({
-                Bucket: process.env.AWS_BUCKET,
-                Key: key
+                // Bucket: process.env.AWS_BUCKET,
+                // Key: key
             })
             getSignedUrl(s3, command, {expiresIn:900})
         }))
