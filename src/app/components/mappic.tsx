@@ -11,7 +11,6 @@ const getImage = async () => {
       throw new Error('Failed to fetch image');
     }
     const data = response.json()
-    console.log('data', data)
     return data
   } catch (error) {
     console.error('Error fetching image:', error);
@@ -20,7 +19,6 @@ const getImage = async () => {
 
 export default async function ImageComponent() {
  const imageUrl = await getImage()
- console.log('imageurl', imageUrl)
   return (
     <div>
       {imageUrl ? (

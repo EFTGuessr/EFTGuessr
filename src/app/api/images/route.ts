@@ -9,18 +9,24 @@ import dotenv from 'dotenv';
 
 dotenv.config()
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+type ResponseData = {
+ url?: string,
+ message?: string
+}
+
+export async function GET(req: NextApiRequest,  res: NextApiResponse<ResponseData>) {
   try {
     const command = new GetObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME!,
-      Key: 'Customs',
+      Key: 'Customs/customtest.png',
     });
+    // must change key to expressions of folder(map) and image
 
     const url = await getSignedUrl(s3, command,{ expiresIn: 3600 });
-
-    return res.status(200).json({ url });
+    console.log('url', url)
+    res.status(200).json({ url });
   } catch (error) {
     console.error('Error fetching image from S3:', error);
     res.status(500).json({ message: 'Error fetching image from S3' });
   }
-}``
+}
