@@ -3,14 +3,14 @@ import Image from 'next/image'
 
 const getImage = async () => {
   try {
-    const response = await fetch('', {
+    const response = await fetch('api/images', {
       cache: 'no-store'
     });
     console.log('response', response)
     if (!response.ok) {
       throw new Error('Failed to fetch image');
     }
-    const data = await response.body;
+    const data = response.json()
     console.log('data', data)
     return data
   } catch (error) {
