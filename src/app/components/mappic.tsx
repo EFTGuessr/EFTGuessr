@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const getImage = async () => {
   try {
-    const response = await fetch('', {
+    const response = await fetch('/api/getImage', {
       cache: 'no-store'
     });
     console.log('response', response)

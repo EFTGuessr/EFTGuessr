@@ -10,7 +10,7 @@ import { s3 } from '@/utils/s3'
 export default async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
     const command = new GetObjectCommand({
-      Bucket: process.env.AWS_BUCKET,
+      Bucket: process.env.AWS_BUCKET_NAME!,
       Key: 'Customs',
     });
 
