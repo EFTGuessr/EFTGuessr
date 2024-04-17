@@ -21,7 +21,7 @@ export async function GET(): Promise<ResponseData> {
     });
     // for future: must change key to expressions of folder(map) and image
   
-    const url = await getSignedUrl(s3, command);
+    const url = await getSignedUrl(s3, command, {expiresIn: 3600});
  
     return new NextResponse(url)
   } catch (error) {
