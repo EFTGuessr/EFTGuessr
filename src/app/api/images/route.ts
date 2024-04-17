@@ -20,12 +20,13 @@ export async function GET(): Promise<ResponseData> {
       Key: 'Customs/customtest.png',
     });
     // for future: must change key to expressions of folder(map) and image
-
-    const url = await getSignedUrl(s3, command,{ expiresIn: 3600 });
+  
+    const url = await getSignedUrl(s3, command);
+ 
     return new NextResponse(url)
   } catch (error) {
     console.error('Error fetching image from S3:', error);
-    return new Response('Error fetching image from S3');
+    return new NextResponse('Error fetching image from S3');
   }
 }
 
